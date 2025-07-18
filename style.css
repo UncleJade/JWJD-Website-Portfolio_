@@ -1309,3 +1309,63 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
 [data-theme="dark"] .personal-skill span {
   color: var(--highlight);
 }
+.designs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2.2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  transition: all var(--transition), box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 0 18px 2px var(--highlight), 0 4px 16px 0 rgba(26,35,126,0.18);
+  border: 2.5px solid var(--highlight);
+  position: relative;
+  overflow: hidden;
+}
+.designs-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(270deg, var(--highlight), var(--accent), var(--highlight));
+  opacity: 0.5;
+  z-index: 0;
+  filter: blur(8px);
+  animation: designs-btn-glow 2.5s linear infinite;
+}
+@keyframes designs-btn-glow {
+  0% { filter: blur(8px) brightness(1); }
+  50% { filter: blur(12px) brightness(1.2); }
+  100% { filter: blur(8px) brightness(1); }
+}
+.designs-btn span, .designs-btn .icon {
+  position: relative;
+  z-index: 1;
+}
+.designs-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 0 32px 8px var(--accent), 0 8px 32px 0 rgba(26,35,126,0.25);
+  background: linear-gradient(135deg, var(--highlight) 0%, var(--accent) 100%);
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .designs-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+  }
+}
+[data-theme="dark"] .designs-btn {
+  background: linear-gradient(135deg, var(--highlight) 0%, var(--accent) 100%);
+  box-shadow: 0 0 22px 4px var(--accent), 0 4px 16px 0 rgba(247,197,224,0.18);
+  border-color: var(--accent);
+}
+[data-theme="dark"] .designs-btn:hover {
+  box-shadow: 0 0 36px 10px var(--highlight), 0 8px 32px 0 rgba(163,191,250,0.25);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
+}
