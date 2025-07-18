@@ -1249,6 +1249,7 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
   box-shadow: 0 0 16px 4px var(--accent), 0 2px 8px 0 rgba(26,35,126,0.18);
   filter: drop-shadow(0 0 8px var(--highlight));
 }
+/* Remove bar and percent, center personal skills */
 .personal-skills {
   margin-top: 2.5rem;
   background: var(--card-bg);
@@ -1267,99 +1268,44 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
   text-align: center;
 }
 .personal-skill {
-  display: inline-block;
-  background: var(--secondary-bg);
-  color: var(--accent);
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 8px 0 rgba(26,35,126,0.08);
-  padding: 0.7rem 1.5rem;
-  margin: 0.5rem;
-  font-size: 1.08rem;
-  font-weight: 600;
-  min-width: 120px;
-  text-align: center;
-  transition: background 0.3s, color 0.3s;
+  display: block;
+  margin-bottom: 1.1rem;
 }
 .personal-skill span {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-[data-theme="dark"] .personal-skills {
-  background: var(--secondary-bg);
-  box-shadow: 0 0 16px 4px var(--accent), 0 2px 8px 0 rgba(26,35,126,0.18);
-}
-[data-theme="dark"] .personal-skill {
-  background: var(--accent);
-  color: var(--highlight);
-}
-.skill-bar {
-  flex: 1;
-  height: 14px;
-  background: var(--secondary-bg);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-right: 0.5rem;
-  box-shadow: 0 1px 4px 0 rgba(26,35,126,0.08);
-}
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--highlight) 100%);
-  border-radius: 8px;
-  transition: width 0.7s cubic-bezier(.77,0,.18,1);
-}
-.skill-percent {
-  font-size: 1.05rem;
-  color: var(--accent);
-  font-weight: 700;
-  min-width: 40px;
-  text-align: right;
-}
-[data-theme="dark"] .personal-skills {
-  background: var(--secondary-bg);
-  box-shadow: 0 0 16px 4px var(--accent), 0 2px 8px 0 rgba(26,35,126,0.18);
-}
-[data-theme="dark"] .personal-skill span,
-[data-theme="dark"] .skill-percent {
-  color: var(--highlight);
-}
-[data-theme="dark"] .skill-bar {
-  background: #23243a;
-}
-[data-theme="dark"] .skill-bar-fill {
-  background: linear-gradient(90deg, var(--highlight) 0%, var(--accent) 100%);
-}
-.designs-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
-  color: white;
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
   font-size: 1.1rem;
-  transition: all var(--transition);
-  box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
-  border: 2px solid transparent;
-  margin-top: 1.5rem;
+  color: var(--text-main);
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  padding: 0.7em 2em;
+  margin: 0.5em 0;
+  border-radius: 1.2em;
+  background: var(--card-bg);
+  box-shadow: 0 0 16px 2px var(--highlight), 0 2px 8px 0 rgba(26,35,126,0.10);
+  transition: box-shadow 0.3s, background 0.3s;
 }
-.designs-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(26, 35, 126, 0.4);
-  background: linear-gradient(135deg, var(--highlight) 0%, var(--accent) 100%);
-  color: white;
-  text-decoration: none;
+.personal-skill span:hover {
+  box-shadow: 0 0 32px 6px var(--accent), 0 4px 16px 0 rgba(26,35,126,0.18);
+  background: var(--highlight);
+  color: #fff;
 }
-.designs-btn .icon {
-  font-size: 1.2rem;
+[data-theme="dark"] .personal-skill span {
+  background: var(--secondary-bg);
+  box-shadow: 0 0 18px 4px var(--accent), 0 2px 8px 0 rgba(26,35,126,0.18);
+  color: var(--highlight);
 }
-[data-theme="dark"] .designs-btn {
-  background: linear-gradient(135deg, var(--highlight) 0%, var(--accent) 100%);
-  box-shadow: 0 4px 15px rgba(247, 197, 224, 0.3);
+[data-theme="dark"] .personal-skill span:hover {
+  box-shadow: 0 0 36px 8px var(--highlight), 0 4px 16px 0 rgba(163,191,250,0.18);
+  background: var(--accent);
+  color: #fff;
 }
-[data-theme="dark"] .designs-btn:hover {
-  box-shadow: 0 8px 25px rgba(247, 197, 224, 0.4);
-  background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
+.skill-bar, .skill-bar-fill, .skill-percent {
+  display: none !important;
+}
+[data-theme="dark"] .personal-skills {
+  background: var(--secondary-bg);
+  box-shadow: 0 0 16px 4px var(--accent), 0 2px 8px 0 rgba(26,35,126,0.18);
+}
+[data-theme="dark"] .personal-skill span {
+  color: var(--highlight);
 }
