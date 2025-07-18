@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Designs Gallery | Jade Devilles</title>
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-section {
+      margin-bottom: 3rem;
+    }
+    .gallery-title {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .gallery-img {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 8px 0 rgba(26,35,126,0.10);
+      background: var(--card-bg);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 24px 0 rgba(26,35,126,0.18);
+    }
+    @media (max-width: 600px) {
+      .gallery-img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sparkle-bg"></div>
+  <div class="animated-bg"></div>
+  <div class="leaves-container"></div>
+  <div class="snow-container"></div>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="Images/jade_logo.png" alt="Jade Devilles Logo" class="logo-img" /></div>
+      <ul class="nav-links">
+        <li><a href="index.html"><span class="icon">🏠</span>Back to Portfolio</a></li>
+        <li><button id="theme-toggle" aria-label="Switch theme"><span class="icon">🌙</span></button></li>
+      </ul>
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+    </nav>
+  </header>
+  <main>
+    <section class="section projects-section">
+      <h2 class="gallery-title"><span class="icon">🎨</span>Design Gallery</h2>
+      
+      <!-- T-Shirts Section -->
+      <div class="gallery-section">
+        <h3 class="gallery-title">T-Shirts</h3>
+        <div class="gallery-grid">
+          <img src="Images/TShirt1.jpg" alt="T-Shirt Design 1" class="gallery-img" />
+          <img src="Images/TShirt2.jpg" alt="T-Shirt Design 2" class="gallery-img" />
+          <img src="Images/TShirt3.jpg" alt="T-Shirt Design 3" class="gallery-img" />
+          <img src="Images/TShirt4.jpg" alt="T-Shirt Design 4" class="gallery-img" />
+          <img src="Images/TShirt5.jpg" alt="T-Shirt Design 5" class="gallery-img" />
+        </div>
+      </div>
+      
+      <!-- Tarpaulin and Invitation Program Section -->
+      <div class="gallery-section">
+        <h3 class="gallery-title">Tarpaulin and Invitation Program</h3>
+        <div class="gallery-grid">
+          <img src="Images/Tarpaulin_Design.png" alt="Tarpaulin Design" class="gallery-img" />
+          <img src="Images/Invitation Card.png" alt="Invitation Card" class="gallery-img" />
+          <img src="Images/BABY JHANXEL Tarpaulin.jpg" alt="BABY JHANXEL Tarpaulin" class="gallery-img" />
+          <img src="Images/Baby Zoyen Tarpaulin.jpg" alt="Baby Zoyen Tarpaulin" class="gallery-img" />
+        </div>
+      </div>
+      
+      <!-- Certificates & Programs Section -->
+      <div class="gallery-section">
+        <h3 class="gallery-title">Certificates & Programs</h3>
+        <div class="gallery-grid">
+          <img src="Images/Certificate_Design.png" alt="Certificate Design" class="gallery-img" />
+          <img src="Images/Program 1.png" alt="Program 1" class="gallery-img" />
+          <img src="Images/Program 2.png" alt="Program 2" class="gallery-img" />
+        </div>
+      </div>
+      
+      <!-- Others Section -->
+      <div class="gallery-section">
+        <h3 class="gallery-title">Others</h3>
+        <div class="gallery-grid">
+          <!-- Add more images here as needed -->
+        </div>
+      </div>
+      <div class="projects-actions" style="text-align:center; margin-top:2.5rem;">
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Jade Devilles. All rights reserved.</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html> 
