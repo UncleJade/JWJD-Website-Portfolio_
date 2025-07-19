@@ -90,7 +90,102 @@ certPopup.addEventListener('click', function(e) {
   }
 });
 
-// Ensure leaves and snow containers exist
+// Space Animation System
+function createSpaceElements() {
+  const spaceContainer = document.querySelector('.space-container');
+  if (!spaceContainer) return;
+
+  // Create stars
+  for (let i = 0; i < 150; i++) {
+    const star = document.createElement('div');
+    star.className = `star ${Math.random() > 0.7 ? 'large' : Math.random() > 0.4 ? 'medium' : 'small'}`;
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    spaceContainer.appendChild(star);
+  }
+
+  // Create shooting stars
+  function createShootingStar() {
+    const shootingStar = document.createElement('div');
+    shootingStar.className = 'shooting-star';
+    shootingStar.style.top = Math.random() * 50 + '%';
+    shootingStar.style.left = '-100px';
+    spaceContainer.appendChild(shootingStar);
+    
+    setTimeout(() => {
+      if (shootingStar.parentNode) {
+        shootingStar.parentNode.removeChild(shootingStar);
+      }
+    }, 2000);
+  }
+
+  // Create shooting stars periodically
+  setInterval(createShootingStar, 3000);
+  createShootingStar(); // Create first one immediately
+
+  // Create spaceships
+  function createSpaceship() {
+    const spaceship = document.createElement('div');
+    spaceship.className = 'spaceship';
+    spaceship.style.top = Math.random() * 80 + 10 + '%';
+    spaceship.style.left = '-50px';
+    spaceContainer.appendChild(spaceship);
+    
+    setTimeout(() => {
+      if (spaceship.parentNode) {
+        spaceship.parentNode.removeChild(spaceship);
+      }
+    }, 15000);
+  }
+
+  // Create spaceships periodically
+  setInterval(createSpaceship, 8000);
+  createSpaceship(); // Create first one immediately
+
+  // Create asteroids
+  function createAsteroid() {
+    const asteroid = document.createElement('div');
+    const size = Math.random() > 0.7 ? 'large' : Math.random() > 0.4 ? 'medium' : 'small';
+    asteroid.className = `asteroid ${size}`;
+    asteroid.style.top = Math.random() * 80 + 10 + '%';
+    asteroid.style.left = '-50px';
+    spaceContainer.appendChild(asteroid);
+    
+    setTimeout(() => {
+      if (asteroid.parentNode) {
+        asteroid.parentNode.removeChild(asteroid);
+      }
+    }, 20000);
+  }
+
+  // Create asteroids periodically
+  setInterval(createAsteroid, 12000);
+  createAsteroid(); // Create first one immediately
+
+  // Create planets
+  function createPlanet() {
+    const planet = document.createElement('div');
+    const types = ['earth-like', 'gas-giant', 'ice-planet'];
+    const type = types[Math.floor(Math.random() * types.length)];
+    planet.className = `planet ${type}`;
+    planet.style.top = Math.random() * 60 + 20 + '%';
+    planet.style.left = '-100px';
+    spaceContainer.appendChild(planet);
+    
+    setTimeout(() => {
+      if (planet.parentNode) {
+        planet.parentNode.removeChild(planet);
+      }
+    }, 40000);
+  }
+
+  // Create planets periodically
+  setInterval(createPlanet, 25000);
+  createPlanet(); // Create first one immediately
+}
+
+// Ensure animation containers exist
 function ensureAnimationContainers() {
   let leavesContainer = document.querySelector('.leaves-container');
   if (!leavesContainer) {
@@ -112,6 +207,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const containers = ensureAnimationContainers();
   window.leavesContainer = containers.leavesContainer;
   window.snowContainer = containers.snowContainer;
+  
+  // Initialize space animation
+  createSpaceElements();
 });
 
 // --- Visitor Viewer ---
