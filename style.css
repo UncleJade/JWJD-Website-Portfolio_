@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
 /* Space-themed Portfolio for Jade Devilles */
 :root {
   --primary-bg: #fff;
@@ -137,14 +138,19 @@ header {
   position: relative;
 }
 .character-img {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 8px 32px 0 rgba(163,191,250,0.18);
-  border: 4px solid var(--highlight);
   background: var(--card-bg);
   animation: float-loop 5s ease-in-out infinite;
+}
+@media (max-width: 600px) {
+  .character-img {
+    width: 180px;
+    height: 180px;
+  }
 }
 @keyframes float-loop {
   0% { transform: translateY(0) scale(1); }
@@ -162,8 +168,31 @@ header {
   letter-spacing: 1px;
 }
 .intro-text .highlight {
-  color: #cdcaf1; /* Dark color for daylight mode */
+  color: #cdcaf1;
   text-shadow: 0 2px 8px var(--accent);
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-family: 'Orbitron', Arial, sans-serif;
+  background: linear-gradient(270deg, #a3bffa, #ff6b6b, #4a90e2, #fbeec1, #b388ff, #a3bffa);
+  background-size: 1200% 1200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nebula-fade 8s ease-in-out infinite;
+}
+@keyframes nebula-fade {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+@media (max-width: 600px) {
+  .intro-text .highlight {
+    font-size: 2rem;
+  }
 }
 [data-theme="dark"] .intro-text .highlight {
   color: var(--highlight); /* Pink highlight in dark mode */
