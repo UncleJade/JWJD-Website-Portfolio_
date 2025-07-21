@@ -1,15 +1,15 @@
 /* Space-themed Portfolio for Jade Devilles */
 :root {
-  --primary-bg: #0a0a2a;
-  --secondary-bg: #1a1a3a;
+  --primary-bg: #fff;
+  --secondary-bg: #f7f7fa;
   --accent: #4a90e2;
   --highlight: #ff6b6b;
-  --text-main: #f7f6fd;
-  --text-soft: #bfc4d9;
-  --card-bg: rgba(26, 26, 58, 0.8);
-  --shadow: 0 4px 24px 0 rgba(74, 144, 226, 0.2);
+  --text-main: #22223b;
+  --text-soft: #6c6f7d;
+  --card-bg: rgba(255,255,255,0.95);
+  --shadow: 0 4px 24px 0 rgba(74, 144, 226, 0.08);
   --sparkle: #4a90e2;
-  --navbar-bg: rgba(10, 10, 42, 0.95);
+  --navbar-bg: rgba(255,255,255,0.95);
   --transition: 0.4s cubic-bezier(.77,0,.18,1);
 }
 [data-theme="dark"] {
@@ -113,13 +113,13 @@ header {
   align-items: center;
   justify-content: center;
   min-height: 80vh;
-  background: linear-gradient(135deg, rgba(26, 26, 58, 0.9) 0%, rgba(74, 144, 226, 0.3) 50%, rgba(255, 107, 107, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(74, 144, 226, 0.08) 50%, rgba(255, 107, 107, 0.05) 100%);
   border-radius: 0 0 2rem 2rem;
   box-shadow: var(--shadow);
   overflow: hidden;
   margin-bottom: 2.5rem;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(74, 144, 226, 0.2);
+  border: 1px solid rgba(74, 144, 226, 0.08);
 }
 .intro-content {
   display: flex;
@@ -245,12 +245,12 @@ header {
 }
 
 .hire-me-card {
-  background: var(--primary-bg);
+  background: #fff;
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: var(--shadow);
   transition: all var(--transition);
-  border: 2px solid transparent;
+  border: 2px solid #f0f0f5;
 }
 
 .hire-me-card:hover {
@@ -485,12 +485,12 @@ header {
 }
 
 .seminar-card {
-  background: var(--primary-bg);
+  background: #fff;
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: var(--shadow);
   transition: all var(--transition);
-  border: 2px solid transparent;
+  border: 2px solid #f0f0f5;
   text-align: center;
 }
 
@@ -609,15 +609,15 @@ header {
   gap: 2rem;
 }
 .project-card {
-  background: rgba(26, 26, 58, 0.8);
+  background: #fff;
   border-radius: 1.2rem;
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   will-change: transform;
   position: relative;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(74, 144, 226, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(74, 144, 226, 0.08);
 }
 .project-card:hover {
   transform: translateY(-8px) scale(1.03);
@@ -1239,15 +1239,21 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
   opacity: 0.85;
 }
 .contact-details {
-  max-width: 420px;
-  margin: 0 auto;
-  background: rgba(26, 26, 58, 0.8);
+  background: #fff;
   border-radius: 1.2rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.06);
+  border: 1px solid #f0f0f5;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   text-align: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
+  max-width: 420px;
+  margin: 0 auto;
+}
+[data-theme="dark"] .contact-details {
+  background: rgba(26, 26, 58, 0.8);
+  box-shadow: var(--shadow);
   border: 1px solid rgba(74, 144, 226, 0.2);
+  backdrop-filter: blur(10px);
 }
 .contact-details p {
   margin: 0.7em 0;
@@ -1375,7 +1381,7 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
   border-color: rgba(255, 107, 107, 0.3);
 }
 .certifications-section {
-  background: rgba(26, 26, 58, 0.8);
+  background: var(--card-bg);
   border-radius: 1.5rem;
   box-shadow: var(--shadow);
   margin-bottom: 2rem;
@@ -1415,28 +1421,32 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
   font-weight: 600;
 }
 .certifications-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
   gap: 2rem;
-  justify-content: center;
+  justify-items: center;
   align-items: stretch;
   margin-top: 2rem;
 }
+@media (max-width: 900px) {
+  .certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+@media (max-width: 600px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
 .cert-card {
-  background: rgba(26, 26, 58, 0.8);
+  background: #fff;
   border-radius: 1.2rem;
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.3), 0 4px 16px rgba(74, 144, 226, 0.2);
-  padding: 1.2rem 1.2rem 1.5rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 180px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(74, 144, 226, 0.3);
+  box-shadow: 0 0 16px rgba(74, 144, 226, 0.08), 0 4px 12px rgba(74, 144, 226, 0.06);
+  border: 1px solid #f0f0f5;
+  backdrop-filter: blur(4px);
 }
 
 .cert-card::before {
@@ -1565,8 +1575,8 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
 .cert-card:hover {
   transform: scale(1.05) translateY(-5px);
   box-shadow: 0 0 30px rgba(74, 144, 226, 0.6), 0 8px 32px rgba(74, 144, 226, 0.4), 0 0 40px rgba(74, 144, 226, 0.2);
-  background: rgba(26, 26, 58, 0.9);
-  border-color: rgba(74, 144, 226, 0.8);
+  background: #f7f7fa;
+  border-color: var(--accent);
 }
 
 .cert-card:hover::before {
