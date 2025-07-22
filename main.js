@@ -12,11 +12,31 @@ function revealSections() {
 window.addEventListener('scroll', revealSections);
 window.addEventListener('load', revealSections);
 
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('mobile-menu');
-const navLinks = document.querySelector('.nav-links');
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+// Corner Menu Logic
+const cornerMenuBtn = document.getElementById('corner-menu-btn');
+const cornerMenuOverlay = document.getElementById('corner-menu-overlay');
+const cornerMenuClose = document.getElementById('corner-menu-close');
+
+cornerMenuBtn.addEventListener('click', () => {
+  cornerMenuOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+});
+cornerMenuClose.addEventListener('click', () => {
+  cornerMenuOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+});
+// Close menu when clicking a link
+cornerMenuOverlay.addEventListener('click', (e) => {
+  if (e.target === cornerMenuOverlay) {
+    cornerMenuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+document.querySelectorAll('.corner-menu-links a, .corner-menu-links button').forEach(link => {
+  link.addEventListener('click', () => {
+    cornerMenuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
 });
 
 // Theme Switcher

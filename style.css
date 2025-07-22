@@ -53,6 +53,12 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.5rem 2rem;
+  position: relative;
+  height: 72px;
+}
+.logo {
+  display: flex;
+  align-items: center;
 }
 .logo {
   font-size: 1.7rem;
@@ -1821,4 +1827,104 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
 [data-theme="dark"] .designs-btn:hover {
   box-shadow: 0 0 36px 10px var(--highlight), 0 8px 32px 0 rgba(163,191,250,0.25);
   background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
+}
+/* Corner Menu Styles */
+.corner-menu-btn {
+  position: static;
+  margin-left: auto;
+  background: none;
+  color: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 2.2rem;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.corner-menu-btn:hover {
+  color: var(--highlight);
+  background: none;
+  box-shadow: none;
+}
+.corner-menu-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 10, 42, 0.92);
+  z-index: 1500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+.corner-menu-overlay.active {
+  display: flex;
+}
+.corner-menu-content {
+  background: rgba(255,255,255,0.04);
+  border-radius: 2rem;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(74, 144, 226, 0.18);
+  text-align: center;
+  min-width: 260px;
+  max-width: 90vw;
+}
+.corner-menu-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 1600;
+}
+.corner-menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.corner-menu-links li a, .corner-menu-links button {
+  font-size: 2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  transition: color 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  justify-content: center;
+}
+.corner-menu-links li a:hover, .corner-menu-links button:hover {
+  color: var(--accent);
+}
+@media (max-width: 600px) {
+  .corner-menu-content {
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+  }
+  .corner-menu-links li a, .corner-menu-links button {
+    font-size: 1.3rem;
+  }
+  .corner-menu-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  .corner-menu-close {
+    top: 1.2rem;
+    right: 1.2rem;
+    font-size: 2rem;
+  }
 }

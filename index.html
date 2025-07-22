@@ -18,17 +18,22 @@
   <header>
     <nav class="navbar">
       <div class="logo"><img src="Images/jade_logo.png" alt="Jade Devilles Logo" class="logo-img" /></div>
-      <ul class="nav-links">
-        <li><a href="#intro"><span class="icon">🏠</span>Home</a></li>
-        <li><a href="#about"><span class="icon">👤</span>About</a></li>
-        <li><a href="#skills"><span class="icon">💡</span>Skills</a></li>
-        <li><a href="#certifications"><span class="icon">🎓</span>Certifications</a></li>
-        <li><a href="#projects"><span class="icon">🗂️</span>Projects</a></li>
-        <li><a href="#contact"><span class="icon">✉️</span>Contact</a></li>
-        <li><button id="theme-toggle" aria-label="Switch theme"><span class="icon">🌙</span></button></li>
-      </ul>
-      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <button class="corner-menu-btn" id="corner-menu-btn" aria-label="Open menu">☰</button>
     </nav>
+    <div class="corner-menu-overlay" id="corner-menu-overlay">
+      <div class="corner-menu-content">
+        <button class="corner-menu-close" id="corner-menu-close" aria-label="Close menu">&times;</button>
+        <ul class="corner-menu-links">
+          <li><a href="#intro"><span class="icon">🏠</span>Home</a></li>
+          <li><a href="#about"><span class="icon">👤</span>About</a></li>
+          <li><a href="#skills"><span class="icon">💡</span>Skills</a></li>
+          <li><a href="#certifications"><span class="icon">🎓</span>Certifications</a></li>
+          <li><a href="#projects"><span class="icon">🗂️</span>Projects</a></li>
+          <li><a href="#contact"><span class="icon">✉️</span>Contact</a></li>
+          <li><button id="theme-toggle" aria-label="Switch theme"><span class="icon">🌙</span></button></li>
+        </ul>
+      </div>
+    </div>
   </header>
   <main>
     <section id="intro" class="section intro-section">
