@@ -2031,3 +2031,17 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
 [data-theme="dark"] .cert-card::after {
   background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%);
 }
+
+.header-banner-img {
+  height: 42px;
+  margin: 0 1rem;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 800px) {
+  .header-banner-img {
+    height: 32px;
+    margin: 0 0.5rem;
+    max-width: 50vw;
+  }
+}

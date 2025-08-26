@@ -116,7 +116,9 @@ if (certCards.length && certPopup && certPopupClose && certPopupTitle && certPop
 }
 
 // Space Animation System
+const ENABLE_SPACE_STARS = false;
 function createSpaceElements() {
+  if (!ENABLE_SPACE_STARS) return; // Stars disabled
   const spaceContainer = document.querySelector('.space-container');
   if (!spaceContainer) return;
 
