@@ -47,7 +47,7 @@ function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
   if (themeToggle) {
-    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    themeToggle.textContent = theme === 'dark' ? '☀' : '🌙';
   }
 }
 function toggleTheme() {
@@ -157,3 +157,176 @@ window.addEventListener('DOMContentLoaded', function() {
   localStorage.setItem('jade_visits', visits);
   visitorCountEl.textContent = visits;
 });
+
+// ========================================
+// PROJECT VIEWS - View Switching & Carousel
+// ========================================
+
+(function() {
+  // View Toggle Buttons
+  const gridViewBtn = document.getElementById('grid-view-btn');
+  const carouselViewBtn = document.getElementById('carousel-view-btn');
+  const masonryViewBtn = document.getElementById('masonry-view-btn');
+  
+  const gridView = document.getElementById('grid-view');
+  const carouselView = document.getElementById('carousel-view');
+  const masonryView = document.getElementById('masonry-view');
+  
+  if (!gridViewBtn || !carouselViewBtn || !masonryViewBtn) return;
+  
+  // Switch to Grid View
+  gridViewBtn.addEventListener('click', () => {
+    switchView('grid');
+  });
+  
+  // Switch to Carousel View
+  carouselViewBtn.addEventListener('click', () => {
+    switchView('carousel');
+  });
+  
+  // Switch to Masonry View
+  masonryViewBtn.addEventListener('click', () => {
+    switchView('masonry');
+  });
+  
+  function switchView(viewType) {
+    // Remove active class from all buttons
+    gridViewBtn.classList.remove('active');
+    carouselViewBtn.classList.remove('active');
+    masonryViewBtn.classList.remove('active');
+    
+    // Hide all views
+    gridView.classList.add('hidden');
+    carouselView.classList.add('hidden');
+    masonryView.classList.add('hidden');
+    
+    // Show selected view and activate button
+    switch(viewType) {
+      case 'grid':
+        gridView.classList.remove('hidden');
+        gridViewBtn.classList.add('active');
+        break;
+      case 'carousel':
+        carouselView.classList.remove('hidden');
+        carouselViewBtn.classList.add('active');
+        break;
+      case 'masonry':
+        masonryView.classList.remove('hidden');
+        masonryViewBtn.classList.add('active');
+        break;
+    }
+  }
+  
+  // ========================================
+  // CAROUSEL FUNCTIONALITY
+  // ========================================
+  
+  const carouselTrack = document.getElementById('carousel-track');
+  const carouselPrev = document.getElementById('carousel-prev');
+  const carouselNext = document.getElementById('carousel-next');
+  const carouselDots = document.querySelectorAll('.carousel-dot');
+  const slides = document.querySelectorAll('.carousel-slide');
+  
+  if (!carouselTrack || !carouselPrev || !carouselNext) return;
+  
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  
+  // Update carousel position
+  function updateCarousel() {
+    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update active slide
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentSlide);
+    });
+    
+    // Update dots
+    carouselDots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+  }
+  
+  // Next slide
+  carouselNext.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+  });
+  
+  // Previous slide
+  carouselPrev.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  });
+  
+  // Dot navigation
+  carouselDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      updateCarousel();
+    });
+  });
+  
+  // Auto-play carousel (optional - uncomment to enable)
+  // let autoPlayInterval = setInterval(() => {
+  //   currentSlide = (currentSlide + 1) % totalSlides;
+  //   updateCarousel();
+  // }, 5000);
+  
+  // Pause auto-play on hover
+  // carouselView.addEventListener('mouseenter', () => {
+  //   clearInterval(autoPlayInterval);
+  // });
+  
+  // carouselView.addEventListener('mouseleave', () => {
+  //   autoPlayInterval = setInterval(() => {
+  //     currentSlide = (currentSlide + 1) % totalSlides;
+  //     updateCarousel();
+  //   }, 5000);
+  // });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (carouselView.classList.contains('hidden')) return;
+    
+    if (e.key === 'ArrowLeft') {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    } else if (e.key === 'ArrowRight') {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+  });
+  
+  // Swipe support for touch devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  carouselView.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  carouselView.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next slide
+        currentSlide = (currentSlide + 1) % totalSlides;
+      } else {
+        // Swipe right - previous slide
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      }
+      updateCarousel();
+    }
+  }
+  
+  // Initialize carousel
+  updateCarousel();
+})();
