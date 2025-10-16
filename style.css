@@ -129,6 +129,15 @@ header {
   color: var(--highlight);
   border-bottom: 2px solid var(--highlight);
 }
+
+  .small-video {
+  width: 500px;      /* width of the square */
+  height: 300px;     /* height of the square */
+  object-fit: cover; /* keeps the video nicely cropped to fit the square */
+  border-radius: 10px; /* optional: rounded corners */
+  display: block;
+  margin: 0 auto;    /* centers the video */
+}
 .menu-toggle {
   display: none;
   font-size: 2.2rem;
@@ -2621,4 +2630,7 @@ body, .section, .about-section, .skills-section, .projects-section, .contact-sec
   .masonry-content p {
     font-size: 0.9rem;
   }
+
+
+
 }

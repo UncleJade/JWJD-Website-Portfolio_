@@ -1,244 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Designs Gallery | Jade Devilles</title>
-  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .gallery-section {
-      margin-bottom: 3rem;
-    }
-    .gallery-title {
-      color: var(--accent);
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      font-weight: 700;
-    }
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      overflow: visible; /* allow hovered images to expand beyond grid */
-    }
-    .gallery-img {
-      width: 240px;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 1.2rem;
-      box-shadow: 0 2px 8px 0 rgba(26,35,126,0.10);
-      background: var(--card-bg);
-      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
-      position: relative;
-      z-index: 1;
-      cursor: zoom-in;
-      transform-origin: center center;
-    }
-    .gallery-img:hover {
-      transform: scale(1.8);
-      box-shadow: 0 16px 48px 0 rgba(26,35,126,0.28);
-      z-index: 10;
-      filter: saturate(110%);
-    }
-    /* Lightbox styles */
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 5000;
-    }
-    .lightbox-overlay.active {
-      display: flex;
-    }
-    .lightbox-content {
-      position: relative;
-      max-width: 95vw;
-      max-height: 95vh;
-    }
-    .lightbox-content img {
-      max-width: 95vw;
-      max-height: 95vh;
-      border-radius: 0.8rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      display: block;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: -48px;
-      right: 0;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    @media (max-width: 600px) {
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Designs Gallery | Jade Devilles</title>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .gallery-section {
+        margin-bottom: 3rem;
+      }
+      .gallery-title {
+        color: var(--accent);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: 700;
+      }
+      .gallery-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        overflow: visible; /* allow hovered images to expand beyond grid */
+      }
       .gallery-img {
-        width: 100%;
-        height: auto;
-        cursor: default;
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 8px 0 rgba(26,35,126,0.10);
+        background: var(--card-bg);
+        transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+        position: relative;
+        z-index: 1;
+        cursor: zoom-in;
+        transform-origin: center center;
       }
       .gallery-img:hover {
-        transform: none; /* avoid aggressive zoom on mobile */
-        box-shadow: 0 8px 24px 0 rgba(26,35,126,0.18);
-        z-index: 1;
-        filter: none;
+        transform: scale(1.8);
+        box-shadow: 0 16px 48px 0 rgba(26,35,126,0.28);
+        z-index: 10;
+        filter: saturate(110%);
+      }
+      /* Lightbox styles */
+      .lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 5000;
+      }
+      .lightbox-overlay.active {
+        display: flex;
+      }
+      .lightbox-content {
+        position: relative;
+        max-width: 95vw;
+        max-height: 95vh;
+      }
+      .lightbox-content img {
+        max-width: 95vw;
+        max-height: 95vh;
+        border-radius: 0.8rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        display: block;
       }
       .lightbox-close {
-        top: 0.5rem;
-        right: 0.5rem;
+        position: absolute;
+        top: -48px;
+        right: 0;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="sparkle-bg"></div>
-  <div class="animated-bg"></div>
-  <div class="leaves-container"></div>
-  <div class="snow-container"></div>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="Images/jade_logo.png" alt="Jade Devilles Logo" class="logo-img" /></div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="back-btn">Back to Portfolio</a></li>
-        <li><button id="theme-toggle" aria-label="Switch theme">Theme</button></li>
-      </ul>
-      <div class="menu-toggle" id="mobile-menu">☰</div>
-    </nav>
-  </header>
-  <main>
-    <section class="section projects-section">
-      <h2 class="gallery-title">Design Gallery</h2>
-      
-      <!-- T-Shirts Section -->
-      <div class="gallery-section">
-        <h3 class="gallery-title">T-Shirts</h3>
-        <div class="gallery-grid">
-          <img src="Images/TShirt1.jpg" alt="T-Shirt Design 1" class="gallery-img" />
-          <img src="Images/TShirt2.jpg" alt="T-Shirt Design 2" class="gallery-img" />
-          <img src="Images/TShirt3.jpg" alt="T-Shirt Design 3" class="gallery-img" />
-          <img src="Images/TShirt4.jpg" alt="T-Shirt Design 4" class="gallery-img" />
-          <img src="Images/TShirt5.jpg" alt="T-Shirt Design 5" class="gallery-img" />
+      @media (max-width: 600px) {
+        .gallery-img {
+          width: 100%;
+          height: auto;
+          cursor: default;
+        }
+        .gallery-img:hover {
+          transform: none; /* avoid aggressive zoom on mobile */
+          box-shadow: 0 8px 24px 0 rgba(26,35,126,0.18);
+          z-index: 1;
+          filter: none;
+        }
+        .lightbox-close {
+          top: 0.5rem;
+          right: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sparkle-bg"></div>
+    <div class="animated-bg"></div>
+    <div class="leaves-container"></div>
+    <div class="snow-container"></div>
+    <header>
+      <nav class="navbar">
+        <div class="logo"><img src="Images/jade_logo.png" alt="Jade Devilles Logo" class="logo-img" /></div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="back-btn">Back to Portfolio</a></li>
+          <li><button id="theme-toggle" aria-label="Switch theme">Theme</button></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+      </nav>
+    </header>
+    <main>
+      <section class="section projects-section">
+        <h2 class="gallery-title">Design Gallery</h2>
+        
+        <!-- T-Shirts Section -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">T-Shirts</h3>
+          <div class="gallery-grid">
+            <img src="Images/TShirt1.jpg" alt="T-Shirt Design 1" class="gallery-img" />
+            <img src="Images/TShirt2.jpg" alt="T-Shirt Design 2" class="gallery-img" />
+            <img src="Images/TShirt3.jpg" alt="T-Shirt Design 3" class="gallery-img" />
+            <img src="Images/TShirt4.jpg" alt="T-Shirt Design 4" class="gallery-img" />
+            <img src="Images/TShirt5.jpg" alt="T-Shirt Design 5" class="gallery-img" />
+          </div>
         </div>
-      </div>
-      
-      <!-- Tarpaulin and Invitation Program Section -->
-      <div class="gallery-section">
-        <h3 class="gallery-title">Tarpaulin and Invitation Program</h3>
-        <div class="gallery-grid">
-          <img src="Images/Tarpaulin_Design.png" alt="Tarpaulin Design" class="gallery-img" />
-          <img src="Images/Invitation Card.png" alt="Invitation Card" class="gallery-img" />
-          <img src="Images/BABY JHANXEL Tarpaulin.jpg" alt="BABY JHANXEL Tarpaulin" class="gallery-img" />
-          <img src="Images/Baby Zoyen Tarpaulin.jpg" alt="Baby Zoyen Tarpaulin" class="gallery-img" />
-          <img src="Images/THESIS TARPAULIN.png" alt="Thesis Tarpaulin" class="gallery-img" />
+        
+        <!-- Tarpaulin and Invitation Program Section -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">Tarpaulin and Invitation Program</h3>
+          <div class="gallery-grid">
+            <img src="Images/Tarpaulin_Design.png" alt="Tarpaulin Design" class="gallery-img" />
+            <img src="Images/Invitation Card.png" alt="Invitation Card" class="gallery-img" />
+            <img src="Images/BABY JHANXEL Tarpaulin.jpg" alt="BABY JHANXEL Tarpaulin" class="gallery-img" />
+            <img src="Images/Baby Zoyen Tarpaulin.jpg" alt="Baby Zoyen Tarpaulin" class="gallery-img" />
+            <img src="Images/THESIS TARPAULIN.png" alt="Thesis Tarpaulin" class="gallery-img" />
+          </div>
         </div>
-      </div>
-      
-      <!-- Certificates & Programs Section -->
-      <div class="gallery-section">
-        <h3 class="gallery-title">Certificates & Programs</h3>
-        <div class="gallery-grid">
-          <img src="Images/Certificate_Design.png" alt="Certificate Design" class="gallery-img" />
-          <img src="Images/Program 1.png" alt="Program 1" class="gallery-img" />
-          <img src="Images/Program 2.png" alt="Program 2" class="gallery-img" />
+        
+        <!-- Certificates & Programs Section -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">Certificates & Programs</h3>
+          <div class="gallery-grid">
+            <img src="Images/Certificate_Design.png" alt="Certificate Design" class="gallery-img" />
+            <img src="Images/Program 1.png" alt="Program 1" class="gallery-img" />
+            <img src="Images/Program 2.png" alt="Program 2" class="gallery-img" />
+          </div>
         </div>
-      </div>
-      
-      <!-- Item Branding Section -->
-      <div class="gallery-section">
-        <h3 class="gallery-title">Item Branding</h3>
-        <div class="gallery-grid">
-          <img src="Images/branding1.png" alt="Invitation Branding" class="gallery-img" />
-          <img src="Images/branding2.png" alt="Tarpaulin Branding" class="gallery-img" />
+        
+        <!-- Item Branding Section -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">Item Branding</h3>
+          <div class="gallery-grid">
+            <img src="Images/branding1.png" alt="Invitation Branding" class="gallery-img" />
+            <img src="Images/branding2.png" alt="Tarpaulin Branding" class="gallery-img" />
+          </div>
         </div>
-      </div>
-      
-      <div class="gallery-section">
-        <h3 class="gallery-title">Modern Poster</h3>
-        <div class="gallery-grid">
-          <img src="Images/POSTER1.png" alt="POSTER1" class="gallery-img" />
-          <img src="Images/POSTER2.png" alt="POSTER2" class="gallery-img" />
-          <img src="Images/POSTER3.png" alt="POSTER3" class="gallery-img" />
-          <img src="Images/POSTER4.png" alt="POSTER4" class="gallery-img" />
-          <img src="Images/POSTER5.png" alt="POSTER5" class="gallery-img" />
-          <img src="Images/POSTER6.png" alt="POSTER6" class="gallery-img" />
-          <img src="Images/POSTER7.png" alt="POSTER7" class="gallery-img" />
+        
+        <div class="gallery-section">
+          <h3 class="gallery-title">Modern Poster</h3>
+          <div class="gallery-grid">
+            <img src="Images/POSTER1.png" alt="POSTER1" class="gallery-img" />
+            <img src="Images/POSTER2.png" alt="POSTER2" class="gallery-img" />
+            <img src="Images/POSTER3.png" alt="POSTER3" class="gallery-img" />
+            <img src="Images/POSTER4.png" alt="POSTER4" class="gallery-img" />
+            <img src="Images/POSTER5.png" alt="POSTER5" class="gallery-img" />
+            <img src="Images/POSTER6.png" alt="POSTER6" class="gallery-img" />
+            <img src="Images/POSTER7.png" alt="POSTER7" class="gallery-img" />
 
+          </div>
         </div>
-      </div>
 
-      <!-- 2D & 3D Logo Creation Section -->
-      <div class="gallery-section">
-        <h3 class="gallery-title">2D &amp; 3D Logo Creation & Generation</h3>
-        <div class="gallery-grid">
-          <img src="Images/2DAltero.png" alt="2D Altero Logo" class="gallery-img" />
-          <img src="Images/2DCozyBean.png" alt="2D CozyBean Logo" class="gallery-img" />
-          <img src="Images/3DAltero.png" alt="3D Altero Logo" class="gallery-img" />
-          <img src="Images/3DCozyBean.png" alt="3D CozyBean Logo" class="gallery-img" />
-          <img src="Images/MEDLogo.png" alt="MED Logo" class="gallery-img" />
-          <img src="Images/MEDLogo2.png" alt="MED Logo" class="gallery-img" />
-          <img src="Images/MEDLogo3.png" alt="MED Logo" class="gallery-img" />
-          <img src="Images/3DCEN1.png" alt="3D CEN Logo" class="gallery-img" />
-          <img src="Images/3DCEN2.png" alt="3D CEN Logo" class="gallery-img" />
-          <img src="Images/logoapp.png" alt="App Logo" class="gallery-img" />
+        <!-- 2D & 3D Logo Creation Section -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">2D &amp; 3D Logo Creation & Generation</h3>
+          <div class="gallery-grid">
+            <img src="Images/2DAltero.png" alt="2D Altero Logo" class="gallery-img" />
+            <img src="Images/2DCozyBean.png" alt="2D CozyBean Logo" class="gallery-img" />
+            <img src="Images/3DAltero.png" alt="3D Altero Logo" class="gallery-img" />
+            <img src="Images/3DCozyBean.png" alt="3D CozyBean Logo" class="gallery-img" />
+            <img src="Images/MEDLogo.png" alt="MED Logo" class="gallery-img" />
+            <img src="Images/MEDLogo2.png" alt="MED Logo" class="gallery-img" />
+            <img src="Images/MEDLogo3.png" alt="MED Logo" class="gallery-img" />
+            <img src="Images/3DCEN1.png" alt="3D CEN Logo" class="gallery-img" />
+            <img src="Images/3DCEN2.png" alt="3D CEN Logo" class="gallery-img" />
+            <img src="Images/logoapp.png" alt="App Logo" class="gallery-img" />
+          </div>
         </div>
-      </div>
 
-      <!-- Others Section -->
-      <div class="gallery-section">
-        <h3 class="gallery-title">Others</h3>
-        <div class="gallery-grid">
-          <img src="Images/3DBoat.png" alt="3D Boat" class="gallery-img" />
-          <img src="Images/3DSystem.png" alt="3D System" class="gallery-img" />
-          <img src="Images/3DSystem2.png" alt="3D System" class="gallery-img" />
+     <div class="gallery-section">
+  <h3 class="gallery-title">Video Edits</h3>
+  <div class="gallery-grid">
+    <video class="small-video" controls>
+      <source src="Videos/VideoEdit1.mp4" type="video/mp4">
+         <p>Your browser does not support the video tag.</p>
+    </video>
+    <video class="small-video" controls>
+      <source src="Videos/VideoEdit2.mp4" type="video/mp4">
+         <p>Your browser does not support the video tag.</p>
+    </video>
+    <video class="small-video" controls>
+      <source src="Videos/VideoEdit3.mp4" type="video/mp4">
+         <p>Your browser does not support the video tag.</p>
+    </video>
+    <video class="small-video" controls>
+      <source src="Videos/VideoEdit4.mp4" type="video/mp4">
+         <p>Your browser does not support the video tag.</p>
+    </video>
+    <video class="small-video" controls>
+      <source src="Videos/VideoEdit5.mp4" type="video/mp4">
+         <p>Your browser does not support the video tag.</p>
+    </video>
+  </div>
+</div>
+
+
+        <!-- Others Section -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">Others</h3>
+          <div class="gallery-grid">
+            <img src="Images/3DBoat.png" alt="3D Boat" class="gallery-img" />
+            <img src="Images/3DSystem.png" alt="3D System" class="gallery-img" />
+            <img src="Images/3DSystem2.png" alt="3D System" class="gallery-img" />
+          </div>
         </div>
-      </div>
-      <div class="projects-actions" style="text-align:center; margin-top:2.5rem;">
-      </div>
-      <!-- Lightbox Overlay -->
-      <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true">
-        <div class="lightbox-content">
-          <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
-          <img id="lightbox-image" alt="Full view" />
+        <div class="projects-actions" style="text-align:center; margin-top:2.5rem;">
         </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Jade Devilles. All rights reserved.</p>
-  </footer>
-  <script>
-    (function(){
-      const overlay = document.getElementById('lightbox-overlay');
-      const imageEl = document.getElementById('lightbox-image');
-      const closeBtn = document.getElementById('lightbox-close');
-      if (!overlay || !imageEl || !closeBtn) return;
-      document.querySelectorAll('.gallery-img').forEach(img => {
-        img.addEventListener('click', () => {
-          imageEl.src = img.src;
-          imageEl.alt = img.alt || 'Full view';
-          overlay.classList.add('active');
-          overlay.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
+        <!-- Lightbox Overlay -->
+        <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true">
+          <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+            <img id="lightbox-image" alt="Full view" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Jade Devilles. All rights reserved.</p>
+    </footer>
+    <script>
+      (function(){
+        const overlay = document.getElementById('lightbox-overlay');
+        const imageEl = document.getElementById('lightbox-image');
+        const closeBtn = document.getElementById('lightbox-close');
+        if (!overlay || !imageEl || !closeBtn) return;
+        document.querySelectorAll('.gallery-img').forEach(img => {
+          img.addEventListener('click', () => {
+            imageEl.src = img.src;
+            imageEl.alt = img.alt || 'Full view';
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          });
         });
-      });
-      function closeLightbox(){
-        overlay.classList.remove('active');
-        overlay.setAttribute('aria-hidden', 'true');
-        imageEl.src = '';
-        document.body.style.overflow = '';
-      }
-      closeBtn.addEventListener('click', closeLightbox);
-      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-    })();
-  </script>
-  <script src="main.js"></script>
-</body>
-</html> 
+        function closeLightbox(){
+          overlay.classList.remove('active');
+          overlay.setAttribute('aria-hidden', 'true');
+          imageEl.src = '';
+          document.body.style.overflow = '';
+        }
+        closeBtn.addEventListener('click', closeLightbox);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+      })();
+    </script>
+    <script src="main.js"></script>
+  </body>
+  </html> 
